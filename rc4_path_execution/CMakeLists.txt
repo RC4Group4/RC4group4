@@ -49,5 +49,8 @@ set(base_local_planner_SRCS
     src/trajectory_planner_ros.cpp
     src/map_grid_visualizer.cpp
 )
-rosbuild_add_executable(base_local_planner ${base_local_planner_SRCS})
-rosbuild_link_boost(base_local_planner thread)
+rosbuild_add_executable(path_execution ${base_local_planner_SRCS})
+rosbuild_link_boost(path_execution thread)
+
+rosbuild_add_executable(test_path_execution src/test_path_execution.cpp)
+
