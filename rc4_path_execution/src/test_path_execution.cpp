@@ -9,7 +9,7 @@ int main (int argc, char **argv)
 
   // create the action client
   // true causes the client to spin its own thread
-  actionlib::SimpleActionClient<rc4_path_execution::PathExecutionAction> ac("PathExecution", true);
+  actionlib::SimpleActionClient<rc4_path_execution::PathExecutionAction> ac("path_execution", true);
 
   ROS_INFO("Waiting for action server to start.");
   // wait for the action server to start
