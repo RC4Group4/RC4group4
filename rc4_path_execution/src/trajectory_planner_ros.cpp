@@ -626,6 +626,8 @@ namespace rc4_path_execution {
   {
       geometry_msgs::Twist cmd_vel;
 
+      ROS_INFO("Goal recieved. Start executing Path.");
+
       std::vector<geometry_msgs::PoseStamped> temp_plan = goal->path.poses;
 
       if(!setPlan(temp_plan))
