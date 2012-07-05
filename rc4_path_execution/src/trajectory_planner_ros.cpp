@@ -678,7 +678,7 @@ int main(int argc, char **argv)
     tf::TransformListener tf;
     Costmap2DROS costmap_ros("local_costmap",tf);
 
-    rc4_path_execution::TrajectoryPlannerROS(nh, "PathExecution", &tf, &costmap_ros);
+    rc4_path_execution::TrajectoryPlannerROS(nh, std::string("path_execution_node"), &tf, &costmap_ros);
 
     ros::spin();
 
