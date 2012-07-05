@@ -75,6 +75,8 @@ namespace rc4_path_execution {
       initialize(name, tf, costmap_ros);
 
       vel_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+
+      as_.start();
   }
 
   void TrajectoryPlannerROS::initialize(std::string name, tf::TransformListener* tf, Costmap2DROS* costmap_ros){
@@ -675,7 +677,6 @@ int main(int argc, char **argv)
 
     tf::TransformListener tf;
     Costmap2DROS costmap_ros("local_costmap",tf);
-    costmap_ros.pause();
 
     rc4_path_execution::TrajectoryPlannerROS(nh, "PathExecution", &tf, &costmap_ros);
 
