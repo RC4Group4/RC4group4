@@ -2,7 +2,7 @@
 <launch>
 
     <node pkg="rc4_path_execution" type="path_execution" respawn="false" name="path_execution" output="screen">
-	<remap from="cmd_vel" to="move_base/cmd_vel"/>
+	<remap from="cmd_vel" to="/cmd_vel"/>
 	<rosparam file="$(find youbot_navigation_common)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
 	<rosparam file="$(find youbot_navigation_local)/config/local_costmap_params.yaml" command="load" />
 	<rosparam file="$(find youbot_navigation_common)/config/base_local_planner_params.yaml" command="load" />
