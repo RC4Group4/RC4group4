@@ -649,10 +649,15 @@ namespace rc4_path_execution {
           //check to see if we've reached our goal
           if(isGoalReached())
           {
+              ROS_INFO("Goal reached.");
               ROS_DEBUG_NAMED("move_base","Goal reached!");
+
+              cmd_vel.linear.x = 0.0;
+              vel_pub_.publish(cmd_vel);
 
               as_.setSucceeded(rc4_path_execution::PathExecutionResult(), "Goal reached.");
               break;
+
           }
 
           if(computeVelocityCommands(cmd_vel))
