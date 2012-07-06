@@ -18,11 +18,11 @@ int main (int argc, char **argv)
   ROS_INFO("Action server started, sending goal.");
   // send a goal to the action
   rc4_path_execution::PathExecutionGoal goal;
-  goal.path.header.frame_id = "base_link";
+  goal.path.header.frame_id = "/odom";
   goal.path.header.seq = 1;
   goal.path.header.stamp = ros::Time::now();
   geometry_msgs::PoseStamped test_pose;
-  test_pose.header.frame_id = "base_link";
+  test_pose.header.frame_id = "/odom";
   test_pose.header.stamp = ros::Time::now();
   test_pose.pose.position.x = 0.5;
   test_pose.pose.orientation.w = 1.0;
