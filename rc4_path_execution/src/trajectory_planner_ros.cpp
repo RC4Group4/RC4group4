@@ -650,7 +650,6 @@ namespace rc4_path_execution {
           if(isGoalReached())
           {
               ROS_INFO("Goal reached.");
-              ROS_DEBUG_NAMED("move_base","Goal reached!");
 
               cmd_vel.linear.x = 0.0;
               vel_pub_.publish(cmd_vel);
@@ -662,12 +661,12 @@ namespace rc4_path_execution {
 
           if(computeVelocityCommands(cmd_vel))
           {
-              ROS_DEBUG_NAMED("move_base", "Got a valid command from the local planner.");
-              //make sure that we send the velocity command to the base
+              ROS_INFO("Got a valid command from the local planner.");
               vel_pub_.publish(cmd_vel);
           }
-          else {
-              ROS_DEBUG_NAMED("move_base", "The local planner could not find a valid plan.");
+          else
+          {
+              ROS_INFO("The local planner could not find a valid plan.");
               as_.setAborted(rc4_path_execution::PathExecutionResult(), "The local planner could not find a valid plan.");
               break;
           }
