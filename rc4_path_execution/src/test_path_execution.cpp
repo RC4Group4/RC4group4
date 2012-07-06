@@ -2,6 +2,7 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <rc4_path_execution/PathExecutionAction.h>
+#include <tf/tf.h>
 
 int main (int argc, char **argv)
 {
@@ -21,12 +22,40 @@ int main (int argc, char **argv)
   goal.path.header.frame_id = "/odom";
   goal.path.header.seq = 1;
   goal.path.header.stamp = ros::Time::now();
+
   geometry_msgs::PoseStamped test_pose;
   test_pose.header.frame_id = "/odom";
   test_pose.header.stamp = ros::Time::now();
   test_pose.pose.position.x = 0.5;
+  test_pose.pose.position.y = 0.5;
+  test_pose.pose.orientation.z = 0.0;
   test_pose.pose.orientation.w = 1.0;
   goal.path.poses.push_back(test_pose);
+
+  test_pose.header.frame_id = "/odom";
+  test_pose.header.stamp = ros::Time::now();
+  test_pose.pose.position.x = -0.5;
+  test_pose.pose.position.y = 0.5;
+  test_pose.pose.orientation.z = 0.0;
+  test_pose.pose.orientation.w = 1.0;
+  goal.path.poses.push_back(test_pose);
+
+  test_pose.header.frame_id = "/odom";
+  test_pose.header.stamp = ros::Time::now();
+  test_pose.pose.position.x = -0.5;
+  test_pose.pose.position.y = -0.5;
+  test_pose.pose.orientation.z = 0.0;
+  test_pose.pose.orientation.w = 1.0;
+  goal.path.poses.push_back(test_pose);
+
+  test_pose.header.frame_id = "/odom";
+  test_pose.header.stamp = ros::Time::now();
+  test_pose.pose.position.x = 0.5;
+  test_pose.pose.position.y = -0.5;
+  test_pose.pose.orientation.z = 0.0;
+  test_pose.pose.orientation.w = 1.0;
+  goal.path.poses.push_back(test_pose);
+
   ac.sendGoal(goal);
 
   //wait for the action to return
